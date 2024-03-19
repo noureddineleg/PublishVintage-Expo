@@ -7,14 +7,8 @@ import {
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 import Card from "./app/components/Card";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 
 export default function App() {
-  return (
-    // <WelcomeScreen/>
-    <Card
-      title="Ancient Maghrebian coin for sale!"
-      subtitle="$100"
-      image={require("./app/assets/coin.jpg")}
-    />
-  );
+  return <ListingDetailsScreen />;
 }
