@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, SafeAreaView } from "react-native";
+import { Text } from "react-native";
 
-import styles from "./styles";
+import defaultStyles from "./styles";
 
 export default function AppText({ children, style }) {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+  return <Text style={[defaultStyles.text, style]}>{children}</Text>;
 }
