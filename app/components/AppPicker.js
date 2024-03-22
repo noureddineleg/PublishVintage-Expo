@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   View,
   StyleSheet,
-  Platform,
   TouchableWithoutFeedback,
   Modal,
   Button,
@@ -31,9 +30,11 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
               style={containerStyle.icon}
             />
           )}
-          <AppText style={containerStyle.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={containerStyle.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={containerStyle.placeholder}>{placeholder}</AppText>
+          )}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -76,6 +77,10 @@ const containerStyle = StyleSheet.create({
     marginRight: 10,
   },
   text: {
+    flex: 1,
+  },
+  placeholder: {
+    color: colors.medium,
     flex: 1,
   },
 });
