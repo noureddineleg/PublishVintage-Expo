@@ -23,9 +23,13 @@ function ListItem({
             {ImageComponent}
             {image && <Image source={image} style={styles.image} />}
             <View style={styles.detailsContainer}>
-              <AppText style={styles.title}>{title}</AppText>
+              <AppText style={styles.title} numberOfLines={1}>
+                {title}
+              </AppText>
               {subTitle && (
-                <AppText style={styles.subTitle}>{subTitle}</AppText>
+                <AppText style={styles.subTitle} umberOfLines={1}>
+                  {subTitle}
+                </AppText>
               )}
             </View>
             <MaterialCommunityIcons
