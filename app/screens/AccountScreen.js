@@ -27,7 +27,7 @@ const menuItems = [
 function AccountScreen(props) {
   return (
     <Screen style={styles.screen}>
-      <View>
+      <View style={styles.container}>
         <ListItem
           title="Nour-Eddine Legragui"
           subTitle="noureddinelegragui@gmail.com"
