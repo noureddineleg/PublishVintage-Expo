@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Screen from "../components/Screen";
 
-import { Button, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+import Button from "../components/AppButton";
 import Card from "../components/Card";
 import colors from "../config/colors";
 import listingsApi from "../api/listings";
