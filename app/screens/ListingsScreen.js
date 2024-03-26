@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Screen from "../components/Screen";
 
 import { FlatList, StyleSheet } from "react-native";
 import Card from "../components/Card";
 import colors from "../config/colors";
+import listingsApi from "../api/listings";
 import routes from "../navigation/routes";
 
-const listings = [
-  {
-    id: 1,
-    title: "Ancient Maghreb coin",
-    price: 100,
-    image: require("../assets/coin.jpg"),
-  },
-  {
-    id: 2,
-    title: "Chair great condition",
-    price: 100,
-    image: require("../assets/chair.jpg"),
-  },
-];
-
 function ListingsScreen({ navigation }) {
+  const [listings, setListenings] = useState([]);
+
+  useEffect(() => {
+    loadListings();
+  }, []);
+
+  const loadListings = async () => {
+    const response = await listingsApi.getListings();
+    setListenings(response.data);
+  };
+
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -31,7 +28,7 @@ function ListingsScreen({ navigation }) {
           <Card
             title={item.title}
             subtitle={"$" + item.price}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
           />
         )}
