@@ -28,7 +28,6 @@ function LoginScreen(props) {
     setLoginFailed(false);
     const user = jwtDecode(result.data);
     authContext.setUser(user);
-    console.log(result.data);
   };
 
   return (
