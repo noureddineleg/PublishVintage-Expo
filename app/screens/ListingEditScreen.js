@@ -94,6 +94,7 @@ function ListingEditScreen() {
     );
 
     if (!result.ok) {
+      console.log(result.data);
       setUploadVisible(false);
       return alert("Could not save the listing");
     }
