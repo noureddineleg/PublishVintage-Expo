@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import jwtDecode from "jwt-decode";
 import * as SplashScreen from "expo-splash-screen";
 
 import navigationTheme from "./app/navigation/navigationTheme";
@@ -20,10 +19,10 @@ export default function App() {
         // Prevent the splash screen from hiding
         await SplashScreen.preventAutoHideAsync();
 
-        // Restore token and user state
-        const token = await authStorage.getToken();
-        if (token) {
-          setUser(jwtDecode(token));
+        // Restore user and user state
+        const user = await authStorage.getUser();
+        if (user) {
+          setUser(setUser(user));
         }
       } catch (e) {
         // Handle errors, possibly by logging them
