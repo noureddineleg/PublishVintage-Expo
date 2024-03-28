@@ -39,10 +39,9 @@ function RegisterScreen() {
       return;
     }
 
-    const { data: authToken } = await loginApi.request(
-      userInfo.email,
-      userInfo.password
-    );
+    const {
+      data: { authToken },
+    } = await loginApi.request(userInfo.email, userInfo.password);
     auth.logIn(authToken);
   };
 
