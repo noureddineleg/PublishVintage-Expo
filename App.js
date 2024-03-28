@@ -22,10 +22,11 @@ export default function App() {
         // Restore user and user state
         const user = await authStorage.getUser();
         if (user) {
-          setUser(setUser(user));
+          setUser(user);
         }
       } catch (e) {
         // Handle errors, possibly by logging them
+        console.log("not setting user");
         console.warn(e);
       } finally {
         // Set the app as ready and hide the splash screen

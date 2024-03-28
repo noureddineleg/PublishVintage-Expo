@@ -42,6 +42,8 @@ function RegisterScreen() {
     const {
       data: { authToken },
     } = await loginApi.request(userInfo.email, userInfo.password);
+    console.log("Auth Token:", authToken);
+    console.log("Type of Auth Token:", typeof authToken);
     auth.logIn(authToken);
   };
 

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { jwtDecode } from "jwt-decode";
+import "core-js/stable/atob";
 
 import AuthContext from "./context";
 import authStorage from "./storage";
