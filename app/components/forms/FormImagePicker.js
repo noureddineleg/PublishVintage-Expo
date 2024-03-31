@@ -9,7 +9,9 @@ function FormImagePicker({ name }) {
   const imageUris = values[name];
 
   const handleAdd = (uri) => {
-    setFieldValue(name, [...imageUris, uri]);
+    const newUris = [...imageUris, uri];
+    console.log("New URIs: ", newUris);
+    setFieldValue(name, newUris);
   };
 
   const handleRemove = (uri) => {

@@ -38,7 +38,14 @@ function ImageInput({ imageUri, onChangeImage }) {
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       });
-      if (!result.canceled) onChangeImage(result.assets[0].uri);
+      console.log(JSON.stringify(result, null, 2));
+
+      // Ensure 'assets' exists and has at least one item
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        console.log("Onchange image");
+        console.log(result.assets[0].uri);
+        onChangeImage(result.assets[0].uri);
+      }
     } catch (error) {
       console.log("Error reading an image", error);
     }

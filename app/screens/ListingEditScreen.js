@@ -86,19 +86,27 @@ function ListingEditScreen() {
   const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing, { resetForm }) => {
+    console.log("Form values on submit:", listing); // Log to ensure URIs are present
+
     setProgress(0);
     setUploadVisible(true);
-    const result = await listingsApi.addListing(
-      { ...listing, location },
-      (progress) => setProgress(progress)
+
+    // Ensure location data is available
+    const completeListing = { ...listing, location: location || {} };
+    console.log("Complete listing for API call:", completeListing);
+
+    const result = await listingsApi.addListing(completeListing, (progress) =>
+      setProgress(progress)
     );
 
     if (!result.ok) {
-      console.log(result.data);
+      console.log("API call failed:", result.problem, result.originalError);
       setUploadVisible(false);
-      return alert("Could not save the listing");
+      alert("Could not save the listing");
+      return;
     }
 
+    console.log("Listing saved:", result.data);
     resetForm();
   };
 
