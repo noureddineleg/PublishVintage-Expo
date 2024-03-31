@@ -29,8 +29,6 @@ export default function App() {
           setUser(user);
         }
       } catch (e) {
-        // Handle errors, possibly by logging them
-        logger.log("not setting user");
         logger.warn(e);
       } finally {
         // Set the app as ready and hide the splash screen

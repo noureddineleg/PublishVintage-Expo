@@ -33,10 +33,10 @@ export default useNotifications = (notificationListener) => {
         });
         expoPushTokensApi.register(token);
       } else {
-        logger.log("Must use physical device for Push Notifications");
+        console.log("Must use physical device for Push Notifications");
       }
     } catch (error) {
-      logger.log("Error getting a push token", error);
+      logger.log(error);
     }
   };
 };
