@@ -16,6 +16,10 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "description": "A marketplace for selling vintage stuff",
+      "notification": {
+        "iosDisplayInForeground": true
+      },
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app requires access to the photo library to select images."
       },
