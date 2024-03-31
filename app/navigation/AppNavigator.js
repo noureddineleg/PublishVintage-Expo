@@ -6,16 +6,22 @@ import * as Device from "expo-device";
 import Constants from "expo-constants";
 
 import ListingEditScreen from "../screens/ListingEditScreen";
+import expoPushTokensApi from "../api/expoPushTokens";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
+import navigation from "./rootNavigation";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   useEffect(() => {
     registerForPushNotifications();
+
+    Notifications.addNotificationResponseReceivedListener((response) => {
+      navigation.navigate("Account");
+    });
   }, []);
 
   const registerForPushNotifications = async () => {
@@ -35,14 +41,13 @@ const AppNavigator = () => {
         token = await Notifications.getExpoPushTokenAsync({
           projectId: Constants.expoConfig.extra.eas.projectId,
         });
-        console.log("Push notification token:", token);
+        expoPushTokensApi.register(token);
       } else {
         console.log("Must use physical device for Push Notifications");
       }
     } catch (error) {
       console.log("Error getting a push token", error);
     }
-    return token.data;
   };
 
   return (
