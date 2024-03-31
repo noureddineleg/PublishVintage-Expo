@@ -4,6 +4,7 @@ import * as Device from "expo-device";
 import Constants from "expo-constants";
 
 import expoPushTokensApi from "../api/expoPushTokens";
+import logger from "../utility/logger";
 
 export default useNotifications = (notificationListener) => {
   useEffect(() => {
@@ -32,10 +33,10 @@ export default useNotifications = (notificationListener) => {
         });
         expoPushTokensApi.register(token);
       } else {
-        console.log("Must use physical device for Push Notifications");
+        logger.log("Must use physical device for Push Notifications");
       }
     } catch (error) {
-      console.log("Error getting a push token", error);
+      logger.log("Error getting a push token", error);
     }
   };
 };

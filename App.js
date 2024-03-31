@@ -9,6 +9,9 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import { navigationRef } from "./app/navigation/rootNavigation";
+import logger from "./app/utility/logger";
+
+logger.start();
 
 export default function App() {
   const [user, setUser] = useState();
@@ -27,8 +30,8 @@ export default function App() {
         }
       } catch (e) {
         // Handle errors, possibly by logging them
-        console.log("not setting user");
-        console.warn(e);
+        logger.log("not setting user");
+        logger.warn(e);
       } finally {
         // Set the app as ready and hide the splash screen
         setIsReady(true);

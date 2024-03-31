@@ -14,6 +14,7 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import listingsApi from "../api/listings";
 import useLocation from "../hooks/useLocation";
 import UploadScreen from "./UploadScreen";
+import logger from "../utility/logger";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -86,27 +87,24 @@ function ListingEditScreen() {
   const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing, { resetForm }) => {
-    console.log("Form values on submit:", listing); // Log to ensure URIs are present
-
     setProgress(0);
     setUploadVisible(true);
 
     // Ensure location data is available
     const completeListing = { ...listing, location: location || {} };
-    console.log("Complete listing for API call:", completeListing);
+    logger.log(completeListing);
 
     const result = await listingsApi.addListing(completeListing, (progress) =>
       setProgress(progress)
     );
 
     if (!result.ok) {
-      console.log("API call failed:", result.problem, result.originalError);
+      logger.log(result.problem);
       setUploadVisible(false);
       alert("Could not save the listing");
       return;
     }
 
-    console.log("Listing saved:", result.data);
     resetForm();
   };
 
