@@ -34,16 +34,16 @@ function RegisterScreen() {
       if (result.data) setError(result.data.error);
       else {
         setError("An unexpected error occurred.");
-        console.log(result);
       }
+      console.log(result.data.token);
       return;
     }
 
-    const {
-      data: { authToken },
-    } = await loginApi.request(userInfo.email, userInfo.password);
-    console.log("Auth Token:", authToken);
-    console.log("Type of Auth Token:", typeof authToken);
+    const loginResult = await loginApi.request(
+      userInfo.email,
+      userInfo.password
+    );
+    const { data: authToken } = loginResult;
     auth.logIn(authToken);
   };
 
