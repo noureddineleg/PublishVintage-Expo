@@ -9,7 +9,11 @@ const FeedNavigator = () => (
   <Stack.Navigator
     screenOptions={{ presentation: "modal", headerShown: false }}
   >
-    <Stack.Screen name="Listings" component={ListingsScreen} />
+    <Stack.Screen
+      name="Listings"
+      component={ListingsScreen}
+      options={{ headerShown: true }}
+    />
     <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} />
   </Stack.Navigator>
 );
