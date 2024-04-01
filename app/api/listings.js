@@ -24,7 +24,21 @@ export const addListing = (listing, onUploadProgress) => {
   if (listing.location)
     data.append("location", JSON.stringify(listing.location));
 
-  console.log(data);
+  const total = 100; // Simulate total as 100 for the sake of demonstration
+  let loaded = 0;
+
+  const interval = setInterval(() => {
+    loaded += 20; // Simulate loading in increments
+    onUploadProgress(loaded / total);
+
+    if (loaded >= total) {
+      clearInterval(interval);
+      // Call the actual upload function or simulate the completion
+    }
+  }, 500); // Update progress every half second
+
+  // Note: Replace the following line with the actual post request
+  // and handle the completion of the upload properly.
   return client.post(endpoint, data, {
     onUploadProgress: (progress) =>
       onUploadProgress(progress.loaded / progress.total),
