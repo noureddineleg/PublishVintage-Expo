@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar, useColorScheme } from "react-native";
 
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -14,6 +15,7 @@ import logger from "./app/utility/logger";
 logger.start();
 
 export default function App() {
+  const deviceTheme = useColorScheme();
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
@@ -48,6 +50,9 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
+      <StatusBar
+        barStyle={deviceTheme === "dark" ? "light-content" : "dark-content"}
+      />
       <OfflineNotice />
       <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
