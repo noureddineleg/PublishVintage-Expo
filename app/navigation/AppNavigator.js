@@ -3,20 +3,25 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ListingEditScreen from "../screens/ListingEditScreen";
-import expoPushTokensApi from "../api/expoPushTokens";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
-import navigation from "./rootNavigation";
 import useNotifications from "../hooks/useNotifications";
+import { Platform } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   useNotifications();
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          height: Platform.OS === "android" ? "8%" : "10%",
+        },
+      }}
+    >
       <Tab.Screen
         name="Feed"
         component={FeedNavigator}
