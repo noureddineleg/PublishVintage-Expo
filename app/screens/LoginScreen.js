@@ -69,10 +69,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 150,
+    height: 150,
     alignSelf: "center",
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 20,
   },
 });
