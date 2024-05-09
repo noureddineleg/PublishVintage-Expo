@@ -2,6 +2,14 @@
 
 Welcome to PublishVintage Expo, a project aimed at helping you learn and explore mobile app development using Expo for React Native. This project focuses on creating a platform for publishing and trading vintage items.
 
+<p float="left">
+  <img src="https://github.com/noureddineleg/PublishVintage-Expo/assets/58888748/4bea8fef-5e52-42ca-ba7d-8d1dab34dee2" width="190" />
+  <img src="https://github.com/noureddineleg/PublishVintage-Expo/assets/58888748/0c0a1663-4cb1-467b-b4f1-94f336c6b1cd" width="190" />
+  <img src="https://github.com/noureddineleg/PublishVintage-Expo/assets/58888748/74352439-9c22-4c66-849d-7939ea61ea4f" width="190" />
+  <img src="https://github.com/noureddineleg/PublishVintage-Expo/assets/58888748/0362e53e-ece6-4ed5-b30b-f43e037777ef" width="190" />
+  <img src="https://github.com/noureddineleg/PublishVintage-Expo/assets/58888748/7e3d1f6f-f8c4-471a-897d-7e59b90f74f4" width="190" />
+</p>
+
 ## **Table of Contents**
 
 1. [Introduction](#introduction)
